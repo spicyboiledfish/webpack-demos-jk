@@ -1,0 +1,14 @@
+{
+    "presets": [
+        ["@babel/preset-react",
+            { "useBuiltIns": "usage",
+                  "corejs": "2.6.9",
+                  "shippedProposals": true,
+                  "targets": {
+                    "node": "8.15.0",
+                  }
+            },
+        ]
+    ],
+    "plugins": ["@babel/plugin-transform-runtime"]
+  }

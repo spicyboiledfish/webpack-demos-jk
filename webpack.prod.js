@@ -2,6 +2,7 @@
 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -69,7 +70,7 @@ module.exports = {
         }),
         new OptimizeCSSAssetsPlugin({
             assetNameRegExp: /\.css$/g,
-            cssProce
+            cssProcessor: require('cssnano')
         })
     ]
 }
