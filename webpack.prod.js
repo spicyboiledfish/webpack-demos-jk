@@ -4,6 +4,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -34,7 +35,19 @@ module.exports = {
                     // 'style-loader',
                     MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'less-loader'
+                    'less-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                          ident: 'postcss',
+                          sourceMap: true,
+                          plugins: loader => [
+                            require('autoprefixer')({ 
+                                overrideBrowserslist: ['> 0.15% in CN'] 
+                            }) // 添加前缀, 在中国浏览器占比大于0.15% 使用autoprefixer
+                          ]
+                        }
+                    }
                 ]
             },
             {
@@ -86,6 +99,7 @@ module.exports = {
                 minifyJS: true,
                 removeComments: false
             }
-        })
+        }),
+        new CleanWebpackPlugin()
     ]
 }
