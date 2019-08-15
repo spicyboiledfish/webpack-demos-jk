@@ -3,6 +3,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -71,6 +72,20 @@ module.exports = {
         new OptimizeCSSAssetsPlugin({
             assetNameRegExp: /\.css$/g,
             cssProcessor: require('cssnano')
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/search.html'),
+            filename: 'search.html',
+            chunks: ['search'],
+            inject: true,
+            minify: {
+                html5: true,
+                collapseWhitespace: true,
+                preserveLineBreaks: false,
+                minifyCSS: true,
+                minifyJS: true,
+                removeComments: false
+            }
         })
     ]
 }
