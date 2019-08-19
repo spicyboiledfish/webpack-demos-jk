@@ -47,6 +47,13 @@ module.exports = {
                             }) // 添加前缀, 在中国浏览器占比大于0.15% 使用autoprefixer
                           ]
                         }
+                    },
+                    {
+                        loader: 'px2rem-loader',
+                        options: {
+                            remUnit: 75,
+                            remPrecision: 8
+                        }
                     }
                 ]
             },
