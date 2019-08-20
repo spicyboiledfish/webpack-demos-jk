@@ -4,12 +4,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../common/index';
 import logo from './img/logo.png';
+import { a } from './tree-shaking';
 import './search.less';
 
 class Search extends React.Component {
     render() {
+        const funcA = a();
         return <div className="search-text">
-                    Search4
+                    { funcA } Search4
                     <img src={logo} />
                </div>
     }
