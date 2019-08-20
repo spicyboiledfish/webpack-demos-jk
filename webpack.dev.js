@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 
 const setMPA = () => {
     const entry = {};
@@ -92,7 +93,21 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new HtmlWebpackExternalsPlugin({
+            externals: [
+              {
+                module: 'react',
+                entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
+                global: 'React',
+              },
+              {
+                module: 'react-dom',
+                entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+                global: 'ReactDOM',
+              },
+            ],
+        })
     ].concat(htmlWebpackPlugin),
     devServer: {
         contentBase: './dist',

@@ -7,7 +7,6 @@ import './search.less';
 
 class Search extends React.Component {
     render() {
-        a = 1;
         return <div className="search-text">
                     Search4
                     <img src={logo} />
