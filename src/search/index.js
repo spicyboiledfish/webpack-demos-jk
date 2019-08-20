@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '../../common/index';
 import logo from './img/logo.png';
 import './search.less';
 

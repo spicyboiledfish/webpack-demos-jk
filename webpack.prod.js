@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin'); 
+// const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin'); 
 
 const setMPA = () => {
     const entry = {};
@@ -27,7 +27,7 @@ const setMPA = () => {
                 new HtmlWebpackPlugin({
                     template: path.join(__dirname, `src/${pageName}/index.html`),
                     filename: `${pageName}.html`,
-                    chunks: [pageName],
+                    chunks: ['vendors', pageName],
                     inject: true,
                     minify: {
                         html5: true,
@@ -134,22 +134,45 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
         new CleanWebpackPlugin(),
-        new HtmlWebpackExternalsPlugin({
-            externals: [
-              {
-                module: 'react',
-                entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
-                global: 'React',
-              },
-              {
-                module: 'react-dom',
-                entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-                global: 'ReactDOM',
-              },
-            ],
-        })
+        // new HtmlWebpackExternalsPlugin({
+        //     externals: [
+        //       {
+        //         module: 'react',
+        //         entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
+        //         global: 'React',
+        //       },
+        //       {
+        //         module: 'react-dom',
+        //         entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+        //         global: 'ReactDOM',
+        //       },
+        //     ],
+        // })
     ].concat(htmlWebpackPlugin),
-    devtool: 'eval' 
+    devtool: 'eval',
+    // optimization: {
+    //     splitChunks: {
+    //       cacheGroups: {
+    //         vendors: {
+    //           test: /(react|react-dom)/,
+    //           name: 'vendors',
+    //           chunks: 'all',
+    //         }
+    //       }
+    //     }
+    //   },
+    optimization: {
+        splitChunks: {
+          minSize: 0,
+          cacheGroups: {
+            commons: {
+              name: 'commons',
+              chunks: 'all',
+              minChunks: 2
+            }
+          }
+        }
+      } 
     // 'eval',（用eval包裹） 
     // 'source-map',（生成.map文件） 
     // 'inline-source-map' (内联打包体积变大)
