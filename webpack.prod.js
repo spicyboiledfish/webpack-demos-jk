@@ -53,11 +53,12 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name]_[chunkhash:8].js'
     },
-    mode:'production',
+    mode:'none',
     module: {
         rules: [
             {
                 test: /.js$/,
+                exclude: /node_modules/,
                 use: 'babel-loader'
             },
             {
@@ -92,7 +93,7 @@ module.exports = {
                             remUnit: 75,
                             remPrecision: 8
                         }
-                    }
+                    }                   
                 ]
             },
             {
@@ -133,5 +134,10 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new HTMLInlineCSSWebpackPlugin()
-    ].concat(htmlWebpackPlugin)
+    ].concat(htmlWebpackPlugin),
+    devtool: 'eval' 
+    // 'eval',（用eval包裹） 
+    // 'source-map',（生成.map文件） 
+    // 'inline-source-map' (内联打包体积变大)
+    // 'cheap-source-map' (跟source-map差不多，只是少了列信息，包体积相对小一点)
 }
