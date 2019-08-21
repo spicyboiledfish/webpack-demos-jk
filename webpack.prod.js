@@ -2,6 +2,7 @@
 
 const glob = require('glob');
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -27,7 +28,7 @@ const setMPA = () => {
                 new HtmlWebpackPlugin({
                     template: path.join(__dirname, `src/${pageName}/index.html`),
                     filename: `${pageName}.html`,
-                    chunks: ['vendors', pageName],
+                    chunks: [pageName],
                     inject: true,
                     minify: {
                         html5: true,
@@ -54,7 +55,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name]_[chunkhash:8].js'
     },
-    mode:'production',
+    mode:'none',
     module: {
         rules: [
             {
@@ -134,6 +135,7 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
         new CleanWebpackPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin(),  // scope hoisting
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //       {
@@ -149,7 +151,13 @@ module.exports = {
         //     ],
         // })
     ].concat(htmlWebpackPlugin),
-    devtool: 'source-map',
+    // devtool: 'source-map', 
+    // 'eval',（用eval包裹） 
+    // 'source-map',（生成.map文件） 
+    // 'inline-source-map' (内联打包体积变大)
+    // 'cheap-source-map' (跟source-map差不多，只是少了列信息，包体积相对小一点)
+
+
     // optimization: {
     //     splitChunks: {
     //       cacheGroups: {
@@ -161,20 +169,18 @@ module.exports = {
     //       }
     //     }
     //   },
-    optimization: {
-        splitChunks: {
-          minSize: 0,
-          cacheGroups: {
-            commons: {
-              name: 'commons',
-              chunks: 'all',
-              minChunks: 2
-            }
-          }
-        }
-      } 
-    // 'eval',（用eval包裹） 
-    // 'source-map',（生成.map文件） 
-    // 'inline-source-map' (内联打包体积变大)
-    // 'cheap-source-map' (跟source-map差不多，只是少了列信息，包体积相对小一点)
+
+
+    // optimization: {
+    //     splitChunks: {
+    //       minSize: 0,
+    //       cacheGroups: {
+    //         commons: {
+    //           name: 'commons',
+    //           chunks: 'all',
+    //           minChunks: 2
+    //         }
+    //       }
+    //     }
+    //   } 
 }
