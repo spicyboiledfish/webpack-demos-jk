@@ -1,15 +1,11 @@
 {
     "presets": [
-        ["@babel/preset-react",
-            { "useBuiltIns": "usage",
-                  "corejs": "2.6.9",
-                  "shippedProposals": true,
-                  "targets": {
-                    "node": "8.15.0",
-                  }
-            },
-        ]
+        [
+          "@babel/preset-env"
+        ],
+        "@babel/preset-react"
     ],
-    "plugins": ["@babel/plugin-transform-runtime"],
-    "compact": false
+    "plugins":[
+        "@babel/plugin-syntax-dynamic-import"
+    ]
   }
