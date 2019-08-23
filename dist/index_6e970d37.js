@@ -81,15 +81,30 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */,
-/* 1 */
-/***/ (function(module, exports) {
+/******/ ({
 
-throw new Error("Module build failed (from ./node_modules/eslint-loader/index.js):\nError: Cannot find module 'eslint'\n    at Function.Module._resolveFilename (module.js:548:15)\n    at Function.Module._load (module.js:475:25)\n    at Module.require (module.js:597:17)\n    at require (/Users/wangrui/workspace/tech/webpack-demos-jk/node_modules/v8-compile-cache/v8-compile-cache.js:161:20)\n    at Object.module.exports (/Users/wangrui/workspace/tech/webpack-demos-jk/node_modules/eslint-loader/index.js:222:18)");
+/***/ 14:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./src/index/helloworld.js
+function helloworld() {
+  return 'Hello World!';
+}
+// CONCATENATED MODULE: ./common/index.js
+function common() {
+  return 'common module';
+}
+// CONCATENATED MODULE: ./src/index/index.js
+
+
+document.write(helloworld());
 
 /***/ })
-/******/ ]);
+
+/******/ });

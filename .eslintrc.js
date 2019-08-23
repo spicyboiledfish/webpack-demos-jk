@@ -6,6 +6,8 @@ module.exports = {
         "node": true
     },
     "rules": {
-        "indent": ["error", 2]
+        "indent": ["error", 2],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        'jsx-a11y/no-noninteractive-element-interactions': [ 'error', { handlers: ['onClick','onMouseDown','onMouseUp','onKeyPress','onKeyDown','onKeyUp']}],
     }
 }

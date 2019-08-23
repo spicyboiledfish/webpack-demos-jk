@@ -1,3 +1,3 @@
-import React from 'react';
-
-export default () => <div>哈哈哈哈哈</div>
+export default function Test() {
+  return 'test';
+}

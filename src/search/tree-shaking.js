@@ -1,7 +1,7 @@
 export function a() {
-    return 'This is func a';
+  return 'This is func a';
 }
 
 export function b() {
-    return 'This is func b';
+  return 'This is func b';
 }
