@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import largeNumber from 'large-my';
 import logo from './img/logo.png';
 import { a } from './tree-shaking';
 import './search.less';
@@ -25,9 +26,11 @@ class Search extends React.Component {
   render() {
     const { Text } = this.state;
     const funcA = a();
+    const addResult = largeNumber('999', '1');
     return (
       <div className="search-text">
         { funcA }
+        { addResult }
             搜素文字的内容xxx
         {
           Text ? <Text /> : null
