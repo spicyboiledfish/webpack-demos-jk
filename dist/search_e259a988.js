@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + "_" + {"1":"0a9535e0"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + "_" + {"1":"94dca024"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -196,7 +196,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -29349,20 +29349,12 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-if ("none" = 'production') {
+if (false) {} else {
     module.exports = __webpack_require__(12);
-} else {
-    module.exports = __webpack_require__(13);
 }
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-!function(e,t){ true?module.exports=t():undefined}(window,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";function r(e,t){let n=e.length-1,r=t.length-1,o=0,u="";for(;n>=0||r>=0;){let f,i=0,l=0;n>=0&&(i=e[n]-"0",n--),r>=0&&(l=t[r]-"0",r--),(f=i+l+o)>=10?(o=1,f-=10):o=0,u=f+u}return o&&(u=o+u),u}n.r(t),n.d(t,"default",function(){return r})}]).default});
-
-/***/ }),
-/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -29510,21 +29502,21 @@ function add(a, b) {
 });
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "e6b78c40d9b0aac02584b99d077d411f.png";
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
+/* 15 */,
 /* 16 */,
-/* 17 */,
-/* 18 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29543,7 +29535,7 @@ var large_my = __webpack_require__(11);
 var large_my_default = /*#__PURE__*/__webpack_require__.n(large_my);
 
 // EXTERNAL MODULE: ./src/search/img/logo.png
-var logo = __webpack_require__(14);
+var logo = __webpack_require__(13);
 var logo_default = /*#__PURE__*/__webpack_require__.n(logo);
 
 // CONCATENATED MODULE: ./src/search/tree-shaking.js
@@ -29554,7 +29546,7 @@ function b() {
   return 'This is func b';
 }
 // EXTERNAL MODULE: ./src/search/search.less
-var search = __webpack_require__(15);
+var search = __webpack_require__(14);
 
 // CONCATENATED MODULE: ./src/search/index.js
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -29604,8 +29596,8 @@ function (_React$Component) {
     value: function loadComponent() {
       var _this2 = this;
 
-      console.log('import', __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, 16)));
-      __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, 16)).then(function (Text) {
+      console.log('import', __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, 15)));
+      __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, 15)).then(function (Text) {
         console.log('Text', Text);
 
         _this2.setState({
