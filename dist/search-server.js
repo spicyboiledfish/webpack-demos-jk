@@ -213,7 +213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -236,16 +236,16 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 // import logo from './img/logo.png';
 // import { a } from './tree-shaking';
 // import './search.less';
-var React = __webpack_require__(2);
+var React = __webpack_require__(1);
 
-var largeNumber = __webpack_require__(7);
+var largeNumber = __webpack_require__(6);
 
-var logo = __webpack_require__(9);
+var logo = __webpack_require__(8);
 
-var _require = __webpack_require__(10),
+var _require = __webpack_require__(9),
     a = _require.a;
 
-__webpack_require__(11);
+__webpack_require__(10);
 
 var Search =
 /*#__PURE__*/
@@ -265,19 +265,12 @@ function (_React$Component) {
   }
 
   _createClass(Search, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (typeof window === 'undefined') {
-        global.window = {};
-      }
-    }
-  }, {
     key: "loadComponent",
     value: function loadComponent() {
       var _this2 = this;
 
-      console.log('import', __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, 12)));
-      __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, 12)).then(function (Text) {
+      console.log('import', __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, 11)));
+      __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, 11)).then(function (Text) {
         console.log('Text', Text);
 
         _this2.setState({
@@ -315,48 +308,21 @@ function (_React$Component) {
 }(React.Component);
 
 module.exports = React.createElement(Search, null);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(1)))
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (false) {} else {
-  module.exports = __webpack_require__(3);
+  module.exports = __webpack_require__(2);
 }
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -377,8 +343,8 @@ if (true) {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(5);
+var _assign = __webpack_require__(3);
+var checkPropTypes = __webpack_require__(4);
 
 // TODO: this is special because it gets imported during build.
 
@@ -2598,7 +2564,7 @@ module.exports = react;
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2695,7 +2661,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2711,7 +2677,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 var printWarning = function() {};
 
 if (true) {
-  var ReactPropTypesSecret = __webpack_require__(6);
+  var ReactPropTypesSecret = __webpack_require__(5);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -2804,7 +2770,7 @@ module.exports = checkPropTypes;
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2823,15 +2789,15 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 if (false) {} else {
-    module.exports = __webpack_require__(8);
+    module.exports = __webpack_require__(7);
 }
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -2979,13 +2945,13 @@ function add(a, b) {
 });
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "e6b78c40d9b0aac02584b99d077d411f.png";
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3000,7 +2966,7 @@ function b() {
 }
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin

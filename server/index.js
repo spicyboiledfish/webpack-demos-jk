@@ -1,10 +1,10 @@
-const express = require('express');
-const { renderToString } = require('react-dom/server');
-const SSR = require('../dist/search-server.js');
-
 if ( typeof window === 'undefined') {
     global.window = {};
 }
+
+const express = require('express');
+const { renderToString } = require('react-dom/server');
+const SSR = require('../dist/search-server.js');
 
 const server = (port) => {
     const app = express();

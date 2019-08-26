@@ -18,12 +18,6 @@ class Search extends React.Component {
     };
   }
 
-  componentDidMount() {
-    if (typeof window === 'undefined') {
-      global.window = {};
-    }
-  }
-
   loadComponent() {
     console.log('import', import('./test.js'));
         import('./test.js').then((Text) => {
