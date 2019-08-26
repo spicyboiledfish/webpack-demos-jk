@@ -8,7 +8,8 @@
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch",
     "dev": "webpack-dev-server --config webpack.dev.js --open",
-    "lint": "eslint --fix --ext .js,.js src"
+    "lint": "eslint --fix --ext .js,.js src",
+    "build:ssr": "webpack --config webpack.ssr.js"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "express": "^4.17.1",
     "file-loader": "^4.2.0",
     "glob": "^7.1.4",
     "html-inline-css-webpack-plugin": "^1.6.0",
