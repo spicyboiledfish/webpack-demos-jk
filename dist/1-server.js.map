@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/search/test.js"],"names":[],"mappings":";;;;;;AAAA;AAAA;AAAA;AAAA;AAEe;AAAA,SAAM,yGAAN;AAAA,CAAf,E","file":"1-server.js","sourcesContent":["import React from 'react';\n\nexport default () => <div>哈哈哈哈哈</div>;\n"],"sourceRoot":""}

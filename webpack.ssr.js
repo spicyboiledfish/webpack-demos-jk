@@ -16,7 +16,7 @@ const setMPA = () => {
 
     const entryFiles = glob.sync(path.join(__dirname, './src/*/index-server.js'));
 
-    console.log('entryFiles', entryFiles);
+    // console.log('entryFiles', entryFiles);
     Object.keys(entryFiles)
         .map((index) => {
             const entryFile = entryFiles[index];

@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const setMPA = () => {
     const entry = {};
@@ -13,7 +14,7 @@ const setMPA = () => {
 
     const entryFiles = glob.sync(path.join(__dirname, './src/*/index.js'));
 
-    console.log('entryFiles', entryFiles);
+    // console.log('entryFiles', entryFiles);
     Object.keys(entryFiles)
         .map((index) => {
             const entryFile = entryFiles[index];
@@ -94,6 +95,7 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
+        new FriendlyErrorsWebpackPlugin(),
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //       {
@@ -111,7 +113,8 @@ module.exports = {
     ].concat(htmlWebpackPlugin),
     devServer: {
         contentBase: './dist',
-        hot: true
+        hot: true,
+        stats: 'errors-only'
     },
     devtool: 'cheap-source-map'  // 若没有开启source-map, 则断点调试是编译后的jsx代码，开启之后是源代码
 }

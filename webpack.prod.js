@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin'); 
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const setMPA = () => {
     const entry = {};
@@ -16,7 +17,7 @@ const setMPA = () => {
 
     const entryFiles = glob.sync(path.join(__dirname, './src/*/index.js'));
 
-    console.log('entryFiles', entryFiles);
+    // console.log('entryFiles', entryFiles);
     Object.keys(entryFiles)
         .map((index) => {
             const entryFile = entryFiles[index];
@@ -55,7 +56,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name]_[chunkhash:8].js'
     },
-    mode:'none',
+    mode:'production',
     module: {
         rules: [
             {
@@ -135,7 +136,16 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
         new CleanWebpackPlugin(),
-        new webpack.optimize.ModuleConcatenationPlugin(),  // scope hoisting
+        // new webpack.optimize.ModuleConcatenationPlugin(),  // scope hoisting
+        new FriendlyErrorsWebpackPlugin(),
+        function() {
+            this.hooks.done.tap('done', (stats) => {
+                if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
+                    console.log('build error');
+                    process.exit(1);
+                }
+            })
+        }
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //       {
@@ -183,4 +193,5 @@ module.exports = {
     //       }
     //     }
     //   } 
+    stats: 'errors-only'
 }
