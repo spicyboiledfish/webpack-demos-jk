@@ -10,7 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "rimraf": "^3.0.0"
+  },
   "dependencies": {
     "autoprefixer": "^9.6.1",
     "clean-webpack-plugin": "^3.0.0",
