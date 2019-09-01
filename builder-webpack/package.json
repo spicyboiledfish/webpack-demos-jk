@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "istanbul cover ./node_modules/.bin/_mocha",
     "eslint": "eslint ./lib --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "assert": "^2.0.0",
     "glob-all": "^3.1.0",
+    "istanbul": "^1.0.0-alpha.2",
     "mocha": "^6.2.0",
     "rimraf": "^3.0.0"
   },
