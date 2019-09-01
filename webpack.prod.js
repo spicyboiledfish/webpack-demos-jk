@@ -10,7 +10,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin'); 
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
+const smp = new SpeedMeasurePlugin();
 const setMPA = () => {
     const entry = {};
     const htmlWebpackPlugin = [];
@@ -47,7 +50,7 @@ const setMPA = () => {
 
 const { entry, htmlWebpackPlugin } = setMPA();
 
-module.exports = {
+module.exports = smp.wrap({
     entry: entry,
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -142,7 +145,8 @@ module.exports = {
                     process.exit(1);
                 }
             })
-        }
+        },
+        new BundleAnalyzerPlugin()
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //       {
@@ -191,4 +195,4 @@ module.exports = {
     //     }
     //   } 
     stats: 'errors-only'
-}
+});
