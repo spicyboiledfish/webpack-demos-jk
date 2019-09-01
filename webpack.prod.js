@@ -1,5 +1,6 @@
 'use strict';
-
+const TerserPlugin = require('terser-webpack-plugin');
+const Happypack = require('happypack');
 const glob = require('glob');
 const path = require('path');
 const webpack = require('webpack');
@@ -62,7 +63,18 @@ module.exports = smp.wrap({
             {
                 test: /.js$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', 'eslint-loader']
+                use: [
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: 3
+                        }
+                    },
+                    'babel-loader', 
+                    'eslint-loader'
+                ]
+                // use: ['babel-loader', 'eslint-loader']
+                // use: 'happypack/loader'
             },
             {
                 test: /.css$/,
@@ -146,7 +158,12 @@ module.exports = smp.wrap({
                 }
             })
         },
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin(),
+        // new Happypack({
+        //     // 3) re-add the loaders you replaced above in #1:
+        //     loaders: [ 'babel-loader', 'eslint-loader' ]
+        // })
+
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //       {
@@ -168,7 +185,6 @@ module.exports = smp.wrap({
     // 'inline-source-map' (内联打包体积变大)
     // 'cheap-source-map' (跟source-map差不多，只是少了列信息，包体积相对小一点)
 
-
     // optimization: {
     //     splitChunks: {
     //       cacheGroups: {
@@ -180,7 +196,6 @@ module.exports = smp.wrap({
     //       }
     //     }
     //   },
-
 
     // optimization: {
     //     splitChunks: {
@@ -194,5 +209,12 @@ module.exports = smp.wrap({
     //       }
     //     }
     //   } 
-    stats: 'errors-only'
+    optimization: {
+        minimizer: [
+          new TerserPlugin({
+            parallel: true,
+          }),
+        ],
+    },
+    // stats: 'errors-only'
 });
