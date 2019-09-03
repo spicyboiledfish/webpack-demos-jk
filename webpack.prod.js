@@ -13,6 +13,7 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const smp = new SpeedMeasurePlugin();
 const setMPA = () => {
@@ -70,7 +71,7 @@ module.exports = smp.wrap({
                             workers: 3
                         }
                     },
-                    'babel-loader', 
+                    'babel-loader?cacheDirectory=true', 
                     'eslint-loader'
                 ]
                 // use: ['babel-loader', 'eslint-loader']
@@ -148,25 +149,6 @@ module.exports = smp.wrap({
             cssProcessor: require('cssnano')
         }),
         new CleanWebpackPlugin(),
-        // new webpack.optimize.ModuleConcatenationPlugin(),  // scope hoisting
-        new FriendlyErrorsWebpackPlugin(),
-        function() {
-            this.hooks.done.tap('done', (stats) => {
-                if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
-                    console.log('build error');
-                    process.exit(1);
-                }
-            })
-        },
-        new BundleAnalyzerPlugin(),
-        new webpack.DllReferencePlugin({
-            manifest: require('./build/library/library.json')
-        })
-        // new Happypack({
-        //     // 3) re-add the loaders you replaced above in #1:
-        //     loaders: [ 'babel-loader', 'eslint-loader' ]
-        // })
-
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //       {
@@ -181,6 +163,28 @@ module.exports = smp.wrap({
         //       },
         //     ],
         // })
+
+        // new webpack.optimize.ModuleConcatenationPlugin(),  // scope hoisting
+        new FriendlyErrorsWebpackPlugin(),
+        function() {
+            this.hooks.done.tap('done', (stats) => {
+                if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
+                    console.log('build error');
+                    process.exit(1);
+                }
+            })
+        },
+        // new BundleAnalyzerPlugin(),
+
+        // new Happypack({
+        //     // 3) re-add the loaders you replaced above in #1:
+        //     loaders: [ 'babel-loader?cacheDirectory=true', 'eslint-loader' ]
+        // }),
+        new webpack.DllReferencePlugin({
+            manifest: require('./build/library/library.json')
+        }),
+
+        new HardSourceWebpackPlugin()
     ].concat(htmlWebpackPlugin),
     // devtool: 'source-map', 
     // 'eval',（用eval包裹） 
@@ -216,6 +220,7 @@ module.exports = smp.wrap({
         minimizer: [
           new TerserPlugin({
             parallel: true,
+            cache: true
           }),
         ],
     },
