@@ -159,6 +159,9 @@ module.exports = smp.wrap({
             })
         },
         new BundleAnalyzerPlugin(),
+        new webpack.DllReferencePlugin({
+            manifest: require('./build/library/library.json')
+        })
         // new Happypack({
         //     // 3) re-add the loaders you replaced above in #1:
         //     loaders: [ 'babel-loader', 'eslint-loader' ]

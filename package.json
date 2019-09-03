@@ -12,7 +12,8 @@
     "build:ssr": "webpack --config webpack.ssr.js",
     "commitmsg": "validate-commit-msg",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "build:stats": "webpack --config webpack.prod.js --json > stats.json"
+    "build:stats": "webpack --config webpack.prod.js --json > stats.json",
+    "dll": "webpack --config webpack.dll.js"
   },
   "keywords": [],
   "author": "",
