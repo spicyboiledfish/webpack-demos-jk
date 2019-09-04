@@ -65,6 +65,7 @@ module.exports = smp.wrap({
                 test: /.js$/,
                 exclude: /node_modules/,
                 use: [
+                    'cache-loader',
                     {
                         loader: 'thread-loader',
                         options: {
@@ -184,7 +185,8 @@ module.exports = smp.wrap({
             manifest: require('./build/library/library.json')
         }),
 
-        new HardSourceWebpackPlugin()
+        // new HardSourceWebpackPlugin() 
+        // 使用这个plugin本地报错：TypeError: Function.prototype.toString requires that 'this' be a Function
     ].concat(htmlWebpackPlugin),
     // devtool: 'source-map', 
     // 'eval',（用eval包裹） 
