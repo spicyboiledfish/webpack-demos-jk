@@ -14,8 +14,12 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
 
 const smp = new SpeedMeasurePlugin();
+const PATHS = {
+    src: path.join(__dirname, 'src')
+};
 const setMPA = () => {
     const entry = {};
     const htmlWebpackPlugin = [];
@@ -185,6 +189,9 @@ module.exports = smp.wrap({
         new webpack.DllReferencePlugin({
             manifest: require('./build/library/library.json')
         }),
+        new PurgecssPlugin({
+            paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
+        })
 
         // new HardSourceWebpackPlugin() 
         // 使用这个plugin本地报错：TypeError: Function.prototype.toString requires that 'this' be a Function
