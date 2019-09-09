@@ -69,18 +69,18 @@ module.exports = smp.wrap({
                 test: /.js$/,
                 include: path.resolve('src'),
                 exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'thread-loader',
-                        options: {
-                            workers: 3
-                        }
-                    },
-                    'cache-loader',
-                    'babel-loader?cacheDirectory=true', 
-                    'eslint-loader'
-                ]
-                // use: ['babel-loader', 'eslint-loader']
+                // use: [
+                //     {
+                //         loader: 'thread-loader',
+                //         options: {
+                //             workers: 3
+                //         }
+                //     },
+                //     'cache-loader',
+                //     'babel-loader?cacheDirectory=true', 
+                //     'eslint-loader'
+                // ]
+                use: ['babel-loader', 'eslint-loader']
                 // use: 'happypack/loader'
             },
             {
@@ -183,16 +183,16 @@ module.exports = smp.wrap({
         //     externals: [
         //       {
         //         module: 'react',
-        //         entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
+        //         entry: 'https://cdn.bootcss.com/react/16.8.4/umd/react.production.min.js',
         //         global: 'React',
         //       },
         //       {
         //         module: 'react-dom',
-        //         entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+        //         entry: 'https://cdn.bootcss.com/react-dom/16.8.4/umd/react-dom.production.min.js',
         //         global: 'ReactDOM',
         //       },
         //     ],
-        // })
+        // }),
 
         // new webpack.optimize.ModuleConcatenationPlugin(),  // scope hoisting
         new FriendlyErrorsWebpackPlugin(),
@@ -249,12 +249,12 @@ module.exports = smp.wrap({
     //         }
     //       }
     //     }
-    //   } 
+    //   }, 
     optimization: {
         minimizer: [
           new TerserPlugin({
-            parallel: true,
-            cache: true
+            // parallel: true,
+            // cache: true
           }),
         ],
     },
@@ -265,6 +265,6 @@ module.exports = smp.wrap({
         },
         extensions: ['.js'],
         mainFields: ['main']
-    }
-    // stats: 'errors-only'
+    },
+    stats: 'errors-only'
 });
