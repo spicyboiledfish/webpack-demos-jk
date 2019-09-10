@@ -204,15 +204,15 @@ module.exports = smp.wrap({
                 }
             })
         },
-        // new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin(),
 
         // new Happypack({
         //     // 3) re-add the loaders you replaced above in #1:
         //     loaders: [ 'babel-loader?cacheDirectory=true', 'eslint-loader' ]
         // }),
-        new webpack.DllReferencePlugin({
-            manifest: require('./build/library/library.json')
-        }),
+        // new webpack.DllReferencePlugin({
+        //     manifest: require('./build/library/library.json')
+        // }),
         new PurgecssPlugin({
             paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
         })
@@ -228,28 +228,31 @@ module.exports = smp.wrap({
 
     // optimization: {
     //     splitChunks: {
-    //       cacheGroups: {
-    //         vendors: {
-    //           test: /(react|react-dom)/,
-    //           name: 'vendors',
-    //           chunks: 'all',
+    //         chunks: 'all',
+    //         cacheGroups: {
+    //             vendors: {
+    //                 chunks: 'all',
+    //                 test: /(react|react-dom)/,
+    //                 enforce: true,
+    //                 name: 'vendors',
+    //                 priority: 100
+    //             },
+    //             asyncs: {
+    //                 chunks: 'async',
+    //                 enforce: true,
+    //                 name: 'chunk_async',
+    //                 priority: 90
+    //             },
+    //             commons: {
+    //                 chunks: 'all',
+    //                 enforce: true,
+    //                 name: 'chunk',
+    //                 priority: 80
+    //             }
     //         }
-    //       }
     //     }
-    //   },
+    // },
 
-    // optimization: {
-    //     splitChunks: {
-    //       minSize: 0,
-    //       cacheGroups: {
-    //         commons: {
-    //           name: 'commons',
-    //           chunks: 'all',
-    //           minChunks: 2
-    //         }
-    //       }
-    //     }
-    //   }, 
     optimization: {
         minimizer: [
           new TerserPlugin({
