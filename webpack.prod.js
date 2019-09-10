@@ -204,7 +204,7 @@ module.exports = smp.wrap({
                 }
             })
         },
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
 
         // new Happypack({
         //     // 3) re-add the loaders you replaced above in #1:
