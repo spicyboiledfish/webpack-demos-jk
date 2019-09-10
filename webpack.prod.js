@@ -69,18 +69,18 @@ module.exports = smp.wrap({
                 test: /.js$/,
                 include: path.resolve('src'),
                 exclude: /node_modules/,
-                // use: [
-                //     {
-                //         loader: 'thread-loader',
-                //         options: {
-                //             workers: 3
-                //         }
-                //     },
-                //     'cache-loader',
-                //     'babel-loader?cacheDirectory=true', 
-                //     'eslint-loader'
-                // ]
-                use: ['babel-loader', 'eslint-loader']
+                use: [
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: 3
+                        }
+                    },
+                    'cache-loader',
+                    'babel-loader?cacheDirectory=true', 
+                    'eslint-loader'
+                ]
+                // use: ['babel-loader', 'eslint-loader']
                 // use: 'happypack/loader'
             },
             {
@@ -204,15 +204,15 @@ module.exports = smp.wrap({
                 }
             })
         },
-        // new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin(),
 
         // new Happypack({
         //     // 3) re-add the loaders you replaced above in #1:
         //     loaders: [ 'babel-loader?cacheDirectory=true', 'eslint-loader' ]
         // }),
-        // new webpack.DllReferencePlugin({
-        //     manifest: require('./build/library/library.json')
-        // }),
+        new webpack.DllReferencePlugin({
+            manifest: require('./build/library/library.json')
+        }),
         new PurgecssPlugin({
             paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
         })
@@ -256,8 +256,8 @@ module.exports = smp.wrap({
     optimization: {
         minimizer: [
           new TerserPlugin({
-            // parallel: true,
-            // cache: true
+            parallel: true,
+            cache: true
           }),
         ],
     },
