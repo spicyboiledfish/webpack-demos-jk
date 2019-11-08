@@ -15,6 +15,7 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
+var EmitTemplatePlugin = require('./emit-template-plugin');
 
 const smp = new SpeedMeasurePlugin();
 const PATHS = {
@@ -213,10 +214,17 @@ module.exports = smp.wrap({
         new webpack.DllReferencePlugin({
             manifest: require('./build/library/library.json')
         }),
-        new PurgecssPlugin({
-            paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
-        })
-
+        new EmitTemplatePlugin({
+            template: './template/template.html',
+            filename: path.resolve(__dirname, './index-emit-template.html'),
+            params: {
+              title: '测试啊',
+              name: 'YOLO'
+            }
+          })
+        // new PurgecssPlugin({
+        //     paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true })
+        // })
         // new HardSourceWebpackPlugin() 
         // 使用这个plugin本地报错：TypeError: Function.prototype.toString requires that 'this' be a Function
     ].concat(htmlWebpackPlugin),

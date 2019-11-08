@@ -8,6 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
+console.log('process.cwd();',process.cwd());
 const setMPA = () => {
     const entry = {};
     const htmlWebpackPlugin = [];
@@ -46,7 +47,7 @@ const setMPA = () => {
 }
 
 const { entry, htmlWebpackPlugin } = setMPA();
-
+console.log('entry', entry);
 module.exports = {
     entry: entry,
     output: {
